@@ -71,8 +71,20 @@ getProduct = (id, quantity) => {
     );
 };
 
+showLowInventory = () => {
+    connection.query(
+        "SELECT product_name, stock_quantity FROM bamazon.products WHERE stock_quantity = 0",
+        (err, res) => {
+            if (err) console.log(err);
+            console.log(res);
+            connection.end();
+        }
+    );
+};
+
 //============================================================
 module.exports = {
     showAllProducts: showAllProducts,
-    getProduct: getProduct
+    getProduct: getProduct,
+    showLowInventory: showLowInventory
 };
