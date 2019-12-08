@@ -82,9 +82,21 @@ showLowInventory = () => {
     );
 };
 
+addToInventory = (id, quantity) => {
+    connection.query(
+        `UPDATE bamazon.products SET stock_quantity = ${quantity} WHERE id = ${id}`,
+        err => {
+            if (err) console.log(err);
+            console.log("success");
+        }
+    );
+};
+
 //============================================================
+
 module.exports = {
     showAllProducts: showAllProducts,
     getProduct: getProduct,
-    showLowInventory: showLowInventory
+    showLowInventory: showLowInventory,
+    addToInventory: addToInventory
 };

@@ -21,7 +21,22 @@ mainMenu = () => {
             } else if (res.managerChoice === "View Low Inventory") {
                 functions.showLowInventory();
             } else if (res.managerChoice === "Add to Inventory") {
-                functions.addToInventory();
+                inquirer
+                    .prompt([
+                        {
+                            type: "input",
+                            message: "Enter the id for the inventory update: ",
+                            name: "p_id"
+                        },
+                        {
+                            type: "input",
+                            message: "Enter the quantity: ",
+                            name: "p_quantity"
+                        }
+                    ])
+                    .then(res => {
+                        functions.addToInventory(res.p_id, res.p_quantity);
+                    });
             } else if (res.managerChoice === "Add New product") {
                 functions.addNewProduct();
             } else if (res.managerChoice === "EXIT") {
