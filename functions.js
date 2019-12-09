@@ -27,7 +27,7 @@ showAllProducts = () => {
 getProduct = (id, quantity) => {
     connection.query(
         "SELECT stock_quantity FROM products WHERE ?",
-        { id: id },
+        { item_id: id },
         (err, res) => {
             if (err) console.log(err);
 
@@ -37,11 +37,11 @@ getProduct = (id, quantity) => {
                 newStockValue = stock_quantity - quantity;
 
                 connection.query(
-                    `UPDATE bamazon.products SET stock_quantity = ${newStockValue} WHERE id = ${id}`,
+                    `UPDATE bamazon.products SET stock_quantity = ${newStockValue} WHERE item_id = ${id}`,
                     (err, res) => {
                         if (err) console.log(err);
                         connection.query(
-                            `SELECT price from bamazon.products WHERE id = ${id}`,
+                            `SELECT price from bamazon.products WHERE item_id = ${id}`,
                             (err, res) => {
                                 if (err) console.log(err);
                                 let total = res[0].price * quantity;
@@ -57,6 +57,7 @@ getProduct = (id, quantity) => {
                                         `Your total Bill is: ${total}$`
                                     )
                                 );
+                                connection.end();
                             }
                         );
                     }
@@ -74,18 +75,23 @@ showLowInventory = () => {
         "SELECT product_name, stock_quantity FROM bamazon.products WHERE stock_quantity = 0",
         (err, res) => {
             if (err) console.log(err);
-            console.log(chalk.cyan("Low item in inventory"))
-            console.log(chalk.green(res[0].product_name), chalk.red(res[0].stock_quantity));
+            console.log(chalk.cyan("Low item in inventory"));
+            console.log(
+                chalk.green(res[0].product_name),
+                chalk.red(res[0].stock_quantity)
+            );
         }
     );
 };
 
 addToInventory = (id, quantity) => {
     connection.query(
-        `UPDATE bamazon.products SET stock_quantity = ${quantity} WHERE id = ${id}`,
+        `UPDATE bamazon.products SET stock_quantity = ${quantity} WHERE item_id = ${id}`,
         err => {
             if (err) console.log(err);
-            console.log(chalk.green("You have successfully updated the inventory"));
+            console.log(
+                chalk.green("You have successfully updated the inventory")
+            );
         }
     );
 };
@@ -102,9 +108,9 @@ addNewProduct = (product_name, department_name, price, stock_quantity) => {
 };
 
 db_close = () => {
-    console.log('Thanks for using the App. Have a good day')
+    console.log("Thanks for using the App. Have a good day");
     connection.end();
-}
+};
 
 //============================================================
 
