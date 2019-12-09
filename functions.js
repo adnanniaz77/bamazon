@@ -49,23 +49,21 @@ getProduct = (id, quantity) => {
                                 console.log("===========================");
                                 console.log(
                                     chalk.yellow(
-                                        `Your ordered ${quantity} quantity/quantities.`
+                                        `Your ordered ${quantity} quantity: `
                                     )
                                 );
                                 console.log(
                                     chalk.yellow(
-                                        `Your total Bill is : ${total}`
+                                        `Your total Bill is: ${total}$`
                                     )
                                 );
                             }
                         );
-                        connection.end();
                     }
                 );
             } else {
                 console.log("========================");
                 console.log(chalk.yellow("Insufficient quantity!"));
-                connection.end();
             }
         }
     );
@@ -76,8 +74,10 @@ showLowInventory = () => {
         "SELECT product_name, stock_quantity FROM bamazon.products WHERE stock_quantity = 0",
         (err, res) => {
             if (err) console.log(err);
+            if(res != []) {
+                console.log(chalk.red('You have no low inventory.'))
+            }
             console.log(res);
-            connection.end();
         }
     );
 };
@@ -87,6 +87,7 @@ addToInventory = (id, quantity) => {
         `UPDATE bamazon.products SET stock_quantity = ${quantity} WHERE id = ${id}`,
         err => {
             if (err) console.log(err);
+            console.log(chalk.green("You have successfully updated the inventory"));
         }
     );
 };
@@ -97,10 +98,15 @@ addNewProduct = (product_name, department_name, price, stock_quantity) => {
         VALUES(${product_name}, ${department_name}, ${price}, ${stock_quantity})`,
         err => {
             if (err) console.log(err);
-            // console.log("success");
+            console.log(chalk.green("You have successfully added new Product"));
         }
     );
 };
+
+db_close = () => {
+    console.log('Thanks for using the App. Have a good day')
+    connection.end();
+}
 
 //============================================================
 

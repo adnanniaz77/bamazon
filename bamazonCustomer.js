@@ -3,7 +3,8 @@ const inquirer = require("inquirer");
 
 functions.showAllProducts();
 
-inquirer
+mainMenu = () =>{
+    inquirer
     .prompt([
         {
             type: "input",
@@ -14,8 +15,12 @@ inquirer
             type: "input",
             message: "",
             name: "p_quantity"
-        }
+        },
+
     ])
     .then(res => {
         functions.getProduct(res.p_id, res.p_quantity);
-    });
+    })
+};
+
+mainMenu();

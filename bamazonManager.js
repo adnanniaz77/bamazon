@@ -18,8 +18,10 @@ mainMenu = () => {
         .then(res => {
             if (res.managerChoice === "View Products for Sale") {
                 functions.showAllProducts();
+                mainMenu();
             } else if (res.managerChoice === "View Low Inventory") {
                 functions.showLowInventory();
+                mainMenu();
             } else if (res.managerChoice === "Add to Inventory") {
                 inquirer
                     .prompt([
@@ -36,6 +38,7 @@ mainMenu = () => {
                     ])
                     .then(res => {
                         functions.addToInventory(res.p_id, res.p_quantity);
+                        mainMenu();
                     });
             } else if (res.managerChoice === "Add New product") {
                 inquirer
@@ -73,12 +76,15 @@ mainMenu = () => {
                             price,
                             quantity
                         );
+                        mainMenu();
                     });
             } else if (res.managerChoice === "EXIT") {
                 console.clear();
+                db_close();
                 process.exit();
             }
         });
+        console.log("\n")
 };
 
 mainMenu();
