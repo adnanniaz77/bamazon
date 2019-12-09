@@ -7,7 +7,7 @@ inquirer
     .prompt([
         {
             type: "input",
-            message: "Enter product ID: ",
+            message: "Enter product ID to buy it: ",
             name: "p_id"
         },
         {

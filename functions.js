@@ -87,7 +87,17 @@ addToInventory = (id, quantity) => {
         `UPDATE bamazon.products SET stock_quantity = ${quantity} WHERE id = ${id}`,
         err => {
             if (err) console.log(err);
-            console.log("success");
+        }
+    );
+};
+
+addNewProduct = (product_name, department_name, price, stock_quantity) => {
+    connection.query(
+        `INSERT INTO bamazon.products(product_name, department_name, price, stock_quantity) 
+        VALUES(${product_name}, ${department_name}, ${price}, ${stock_quantity})`,
+        err => {
+            if (err) console.log(err);
+            // console.log("success");
         }
     );
 };
@@ -98,5 +108,6 @@ module.exports = {
     showAllProducts: showAllProducts,
     getProduct: getProduct,
     showLowInventory: showLowInventory,
-    addToInventory: addToInventory
+    addToInventory: addToInventory,
+    addNewProduct: addNewProduct
 };

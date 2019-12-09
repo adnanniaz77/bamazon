@@ -38,7 +38,42 @@ mainMenu = () => {
                         functions.addToInventory(res.p_id, res.p_quantity);
                     });
             } else if (res.managerChoice === "Add New product") {
-                functions.addNewProduct();
+                inquirer
+                    .prompt([
+                        {
+                            type: "input",
+                            name: "product_name",
+                            message: "Enter Name for the product: "
+                        },
+                        {
+                            type: "input",
+                            name: "department_name",
+                            message: "Enter department name for the product: "
+                        },
+                        {
+                            type: "input",
+                            name: "price",
+                            message: "Enter unit price: "
+                        },
+                        {
+                            type: "input",
+                            name: "quantity",
+                            message:
+                                "Enter the number of quantity to be added: "
+                        }
+                    ])
+                    .then(res => {
+                        let product_name = res.product_name;
+                        let department = res.department_name;
+                        let price = parseInt(res.price);
+                        let quantity = parseInt(res.quantity);
+                        addNewProduct(
+                            product_name,
+                            department,
+                            price,
+                            quantity
+                        );
+                    });
             } else if (res.managerChoice === "EXIT") {
                 console.clear();
                 process.exit();
