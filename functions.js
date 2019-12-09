@@ -74,10 +74,8 @@ showLowInventory = () => {
         "SELECT product_name, stock_quantity FROM bamazon.products WHERE stock_quantity = 0",
         (err, res) => {
             if (err) console.log(err);
-            if(res != []) {
-                console.log(chalk.red('You have no low inventory.'))
-            }
-            console.log(res);
+            console.log(chalk.cyan("Low item in inventory"))
+            console.log(chalk.green(res[0].product_name), chalk.red(res[0].stock_quantity));
         }
     );
 };
