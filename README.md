@@ -16,13 +16,14 @@
     4.  Populate this database with around 10 different products.
 
     5.  Then create a Node application called bamazonCustomer.js. Running this application will
-        a.  first display all of the items available for sale. Include the ids, names, and prices of products for sale.
+        a.  first display all of the items available. Include the ids, names, and prices of products for sale.
 
     6.  The app should then prompt users with two messages.
         I.  The first should ask them the ID of the product they would like to buy.
         II. The second message should ask how many units of the product they would like to buy.
 
-    9.  Once the customer has placed the order, your application should check if your store has enough of the product to meet the customer's request.
+    9.  Once the customer has placed the order, your application should check if your store has enough of the product
+    to meet the customer's request.
 
     10. If not, the app should log a phrase like Insufficient quantity!, and then prevent the order from going through.
 
@@ -46,4 +47,8 @@
 
     Copy your 'localhost', 'user' and 'password' information to .env file
 
-## CLI commands
+### bamazonCustomer (Customer's view)  
+ https://drive.google.com/open?id=13T5Gi0QziNdSTk5xvf4k8QiYwo-9GOvQ
+
+### bamazonManager (Manager's View)
+https://drive.google.com/open?id=1uFshkTAGt3ObqzJx_nTCACgVV6nUV6Ji
