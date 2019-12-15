@@ -48,7 +48,7 @@
     Copy your 'localhost', 'user' and 'password' information to .env file
 
 ### bamazonCustomer (Customer's view)  
-https://drive.google.com/open?id=13T5Gi0QziNdSTk5xvf4k8QiYwo-9GOvQ
+ https://drive.google.com/open?id=13T5Gi0QziNdSTk5xvf4k8QiYwo-9GOvQ
 
 ### bamazonManager (Manager's View)
 https://drive.google.com/open?id=1uFshkTAGt3ObqzJx_nTCACgVV6nUV6Ji
