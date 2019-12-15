@@ -48,12 +48,16 @@
     >npm install
 
     Copy your 'localhost', 'user' and 'password' information to .env file
-    ----------------------------------------------------------------------
+
+
+----------------------------------------------------------------------
+
+# Video Demos
 
 ### bamazonCustomer (Customer's view)
 
-<img src="./icons8-play-button-24.png"> => https://drive.google.com/open?id=13T5Gi0QziNdSTk5xvf4k8QiYwo-9GOvQ
+<img src="./icons8-play-button-24.png">   https://drive.google.com/open?id=13T5Gi0QziNdSTk5xvf4k8QiYwo-9GOvQ
 
 ### bamazonManager (Manager's View)
 
-<img src="./icons8-play-button-24.png"> => https://drive.google.com/open?id=1uFshkTAGt3ObqzJx_nTCACgVV6nUV6Ji
+<img src="./icons8-play-button-24.png">   https://drive.google.com/open?id=1uFshkTAGt3ObqzJx_nTCACgVV6nUV6Ji
