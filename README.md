@@ -80,7 +80,7 @@
 
 ### Level #2: bamazonManager (Manager's View)
 
-<img src="./icons8-play-button-24.png"> https://drive.google.com/open?id=1uFshkTAGt3ObqzJx_nTCACgVV6nUV6Ji
+<img src="./icons8-play-button-24.png"> https://drive.google.com/open?id=16KCWTVqQ6EdP2l-fa-vjq50-k2PCXdQ0
 
 ---
 
