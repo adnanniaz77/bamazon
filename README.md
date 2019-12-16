@@ -59,7 +59,7 @@
 ----------------------------------------------------------------------
 
 
-## Challenge #1: Manager View (Next Level)
+## Challenge #2: Manager View (Next Level)
 
     1.  Create a new Node application called bamazonManager.js. Running this application will:
         List a set of menu options:
