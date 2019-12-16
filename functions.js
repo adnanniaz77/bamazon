@@ -57,6 +57,12 @@ getProduct = (id, quantity) => {
                                         `Your total Bill is: ${total}$`
                                     )
                                 );
+                                connection.query(
+                                    `UPDATE bamazon.products SET product_sales = ${total} WHERE item_id = ${id}`,
+                                    (err, res) => {
+                                        if (err) console.log(err);
+                                    }
+                                );
                                 connection.end();
                             }
                         );
