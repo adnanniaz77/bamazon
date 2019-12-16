@@ -10,8 +10,7 @@ inquirer
     })
     .then(res => {
         if (res.supChoice === "View Product Sales by Department") {
-            console.log("View Sales");
-            // viewProductSalesByDept();
+            viewProductSalesByDept();
         } else if (res.supChoice === "Create New Department") {
             inquirer
                 .prompt([

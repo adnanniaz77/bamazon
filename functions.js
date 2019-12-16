@@ -118,6 +118,20 @@ db_close = () => {
     connection.end();
 };
 
+viewProductSalesByDept = (deptName, overHeadCost) => {
+    connection.query(
+        `SELECT department_id, products.department_name, over_head_costs, 
+        product_sales, over_head_costs - product_sales AS profit
+        FROM departments AS d
+        JOIN products 
+        ON products.department_name = d.department_name;`,
+        (err, res) => {
+            if (err) console.log(err);
+            console.table(res);
+        }
+    );
+};
+
 //============================================================
 
 module.exports = {
