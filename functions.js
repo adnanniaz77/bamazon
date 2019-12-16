@@ -57,6 +57,12 @@ getProduct = (id, quantity) => {
                                         `Your total Bill is: ${total}$`
                                     )
                                 );
+                                connection.query(
+                                    `UPDATE bamazon.products SET product_sales = ${total} WHERE item_id = ${id}`,
+                                    (err, res) => {
+                                        if (err) console.log(err);
+                                    }
+                                );
                                 connection.end();
                             }
                         );
@@ -110,6 +116,20 @@ addNewProduct = (product_name, department_name, price, stock_quantity) => {
 db_close = () => {
     console.log("Thanks for using the App. Have a good day");
     connection.end();
+};
+
+viewProductSalesByDept = (deptName, overHeadCost) => {
+    connection.query(
+        `SELECT department_id, products.department_name, over_head_costs, 
+        product_sales, over_head_costs - product_sales AS profit
+        FROM departments AS d
+        JOIN products 
+        ON products.department_name = d.department_name;`,
+        (err, res) => {
+            if (err) console.log(err);
+            console.table(res);
+        }
+    );
 };
 
 //============================================================

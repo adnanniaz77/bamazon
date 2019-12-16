@@ -13,7 +13,7 @@ mainMenu = () => {
             },
             {
                 type: "input",
-                message: "",
+                message: "Enter Quantity",
                 name: "p_quantity"
             }
         ])
