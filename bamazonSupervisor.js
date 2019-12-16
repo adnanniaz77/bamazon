@@ -1,47 +1,45 @@
 const functions = require("./functions.js");
 const inquirer = require("inquirer");
 
-mainMenu = () => {
+menu = () => {
     inquirer
         .prompt({
             type: "list",
-            name: "supChoice",
-            message: "Choose you option: ",
+            name: "userChoices",
+            message: "Choose one of the following",
             choices: [
                 "View Product Sales by Department",
                 "Create New Department",
-                "EXIT"
+                "Exit"
             ]
         })
         .then(res => {
-            if (res.supChoice == "View Product Sales by Department") {
-                viewProductSalesByDept();
-                mainMenu();
-            } else if (res.supChoice == "Create New Department") {
+            if (res.userChoices === "Exit") {
+                process.exit();
+            } else if (res.userChoices === "View Product Sales by Department") {
+                functions.viewProductSalesByDept();
+                menu();
+            } else if (res.userChoices === "Create New Department") {
                 inquirer
                     .prompt([
                         {
                             type: "input",
                             message: "Enter Department Name: ",
-                            name: "department"
+                            name: "dept_name"
                         },
                         {
                             type: "input",
-                            message: "Enter Overhead Cost: ",
-                            name: "department"
+                            message: "Enter Overhead Costs",
+                            name: "cost"
                         }
                     ])
                     .then(res => {
-                        console.log("New Dept");
-                        // createNewDept(deptName, overHeadCost);
+                        functions.createNewDept(res.dept_name, res.cost);
+                        menu();
                     });
-            } else if (res.choices == "EXIT") {
-                console.clear();
-                process.exit();
-                functions.db_close();
             }
         });
 };
 
-mainMenu();
 functions.showAllProducts();
+menu();

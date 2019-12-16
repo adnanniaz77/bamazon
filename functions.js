@@ -18,10 +18,13 @@ connection.connect(err => {
 //===========================================================
 
 showAllProducts = () => {
-    connection.query("SELECT * FROM products", (err, res) => {
-        if (err) console.log(err);
-        console.table(res);
-    });
+    connection.query(
+        "SELECT item_id, product_name, department_name, price, stock_quantity FROM products",
+        (err, res) => {
+            if (err) console.log(err);
+            console.table(res);
+        }
+    );
 };
 
 getProduct = (id, quantity) => {
@@ -132,6 +135,17 @@ viewProductSalesByDept = (deptName, overHeadCost) => {
     );
 };
 
+createNewDept = (deptName, overHeadCost) => {
+    connection.query(
+        `INSERT INTO bamazon.departments(department_name, over_head_costs) 
+        VALUES(${deptName}, ${overHeadCost})`,
+        err => {
+            if (err) console.log(err);
+            console.log("You have successfully added new Department");
+        }
+    );
+};
+
 //============================================================
 
 module.exports = {
@@ -139,5 +153,7 @@ module.exports = {
     getProduct: getProduct,
     showLowInventory: showLowInventory,
     addToInventory: addToInventory,
-    addNewProduct: addNewProduct
+    addNewProduct: addNewProduct,
+    viewProductSalesByDept: viewProductSalesByDept,
+    createNewDept: createNewDept
 };
