@@ -54,10 +54,10 @@
 
 # Video Demos
 
-### bamazonCustomer (Customer's view)
+### LeveL #1: bamazonCustomer (Customer's view)
 
 <img src="./icons8-play-button-24.png">   https://drive.google.com/open?id=13T5Gi0QziNdSTk5xvf4k8QiYwo-9GOvQ
 
-### bamazonManager (Manager's View)
+### Level #2: bamazonManager (Manager's View)
 
 <img src="./icons8-play-button-24.png">   https://drive.google.com/open?id=1uFshkTAGt3ObqzJx_nTCACgVV6nUV6Ji
