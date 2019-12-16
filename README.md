@@ -48,15 +48,39 @@
     >npm install
 
     Copy your 'localhost', 'user' and 'password' information to .env file
-
-
-----------------------------------------------------------------------
-
+    
+    
 # Video Demos
 
 ### LeveL #1: bamazonCustomer (Customer's view)
 
 <img src="./icons8-play-button-24.png">   https://drive.google.com/open?id=13T5Gi0QziNdSTk5xvf4k8QiYwo-9GOvQ
+
+----------------------------------------------------------------------
+
+
+## Challenge #1: Manager View (Next Level)
+
+    1.  Create a new Node application called bamazonManager.js. Running this application will:
+        List a set of menu options:
+    2.  View Products for Sale
+    3.  View Low Inventory
+    4.  Add to Inventory
+    5.  Add New Product
+
+    If a manager selects View Products for Sale, the app should list every available item: the item IDs, 
+    names, prices, and quantities.
+
+    If a manager selects View Low Inventory, then it should list all items with an inventory count lower 
+    than five.
+
+    If a manager selects Add to Inventory, your app should display a prompt that will let the manager "add 
+    more" of any item currently      in the store.
+
+    If a manager selects Add New Product, it should allow the manager to add a completely new product to 
+    the store.
+
+
 
 ### Level #2: bamazonManager (Manager's View)
 
