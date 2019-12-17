@@ -1,5 +1,6 @@
 const functions = require("./functions.js");
 const inquirer = require("inquirer");
+const table = require("table");
 
 menu = () => {
     inquirer

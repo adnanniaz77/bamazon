@@ -81,14 +81,18 @@ getProduct = (id, quantity) => {
 
 showLowInventory = () => {
     connection.query(
-        "SELECT product_name, stock_quantity FROM bamazon.products WHERE stock_quantity = 0",
+        "SELECT * FROM bamazon.products WHERE stock_quantity = 0",
         (err, res) => {
             if (err) console.log(err);
+            console.log("=======================");
             console.log(chalk.cyan("Low item in inventory"));
-            console.log(
-                chalk.green(res[0].product_name),
-                chalk.red(res[0].stock_quantity)
-            );
+            console.log("-----------------------");
+            for (let r in res) {
+                console.log(
+                    chalk.green(res[r].product_name),
+                    chalk.red(res[r].stock_quantity)
+                );
+            }
         }
     );
 };
@@ -105,10 +109,16 @@ addToInventory = (id, quantity) => {
     );
 };
 
-addNewProduct = (product_name, department_name, price, stock_quantity) => {
+addNewProduct = (
+    product_name,
+    department_name,
+    price,
+    stock_quantity,
+    product_sales
+) => {
     connection.query(
-        `INSERT INTO bamazon.products(product_name, department_name, price, stock_quantity) 
-        VALUES(${product_name}, ${department_name}, ${price}, ${stock_quantity})`,
+        `INSERT INTO bamazon.products(product_name, department_name, price, stock_quantity, product_sales) 
+        VALUES(${product_name}, ${department_name}, ${price}, ${stock_quantity}, ${product_sales})`,
         err => {
             if (err) console.log(err);
             console.log(chalk.green("You have successfully added new Product"));
@@ -141,7 +151,15 @@ createNewDept = (deptName, overHeadCost) => {
         VALUES(${deptName}, ${overHeadCost})`,
         err => {
             if (err) console.log(err);
-            console.log("You have successfully added new Department");
+            console.log(
+                chalk.green(
+                    "\n\n\nYou have successfully added new Department: \n" +
+                        chalk.yellow(deptName) +
+                        "with " +
+                        chalk.yellow(overHeadCost) +
+                        " over head cost"
+                )
+            );
         }
     );
 };

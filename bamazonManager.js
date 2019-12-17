@@ -1,5 +1,6 @@
 const inquirer = require("inquirer");
 const functions = require("./functions.js");
+const table = require("table");
 
 mainMenu = () => {
     inquirer
@@ -10,7 +11,7 @@ mainMenu = () => {
             choices: [
                 "View Products for Sale",
                 "View Low Inventory",
-                "Add to Inventory",
+                "Update Inventory",
                 "Add New product",
                 "EXIT"
             ]
@@ -22,7 +23,7 @@ mainMenu = () => {
             } else if (res.managerChoice === "View Low Inventory") {
                 functions.showLowInventory();
                 mainMenu();
-            } else if (res.managerChoice === "Add to Inventory") {
+            } else if (res.managerChoice === "Update Inventory") {
                 inquirer
                     .prompt([
                         {
@@ -63,6 +64,11 @@ mainMenu = () => {
                             name: "quantity",
                             message:
                                 "Enter the number of quantity to be added: "
+                        },
+                        {
+                            type: "input",
+                            name: "product_sales",
+                            message: "Enter beginning product sales Values"
                         }
                     ])
                     .then(res => {
@@ -70,11 +76,13 @@ mainMenu = () => {
                         let department = res.department_name;
                         let price = parseInt(res.price);
                         let quantity = parseInt(res.quantity);
+                        let product_sales = parseInt(res.product_sales);
                         addNewProduct(
                             product_name,
                             department,
                             price,
-                            quantity
+                            quantity,
+                            product_sales
                         );
                         mainMenu();
                     });
@@ -84,7 +92,7 @@ mainMenu = () => {
                 process.exit();
             }
         });
-        console.log("\n")
+    console.log("\n");
 };
 
 mainMenu();
